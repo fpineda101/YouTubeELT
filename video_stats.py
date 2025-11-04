@@ -7,7 +7,6 @@ from dotenv import load_dotenv
 load_dotenv(dotenv_path="venv/.env") 
 
 API_KEY = os.getenv("API_KEY") 
-#API_KEY = "AIzaSyDoNQMGFpkeQHjV1UnvdEg-FaejehWJ6sA"
 CHANNEL_HANDLE = "MrBeast"
 maxResults = 50
 
