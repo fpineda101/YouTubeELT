@@ -11,7 +11,7 @@ table = "yt_api"
 
 @task
 def staging_table():
-    schema = 'staging'
+    schema = "staging"
     
     conn,cur = None, None
 
@@ -32,13 +32,13 @@ def staging_table():
                 insert_rows(cur, conn, schema, row)    
 
             else:
-                if row['video_id'] in table_ids:
+                if row["video_id"] in table_ids:
                     update_rows(cur, conn, schema)
 
                 else:
                     insert_rows(cur, conn, schema, row)
 
-        ids_in_json = {row['video_id'] for row in YT_data}  
+        ids_in_json = {row["video_id"] for row in YT_data}  
 
         ids_to_delete = set(table_ids) - ids_in_json
 
@@ -57,7 +57,7 @@ def staging_table():
 
 @task
 def core_table():
-    schema = 'core'
+    schema = "core"
     conn,cur = None, None
 
     try:
@@ -76,7 +76,7 @@ def core_table():
 
         for row in rows:
             
-            current_video_ids.add(row['Video_ID'])
+            current_video_ids.add(row["Video_ID"])
 
             if len(table_ids) == 0:
                 transformed_row = transform_data(row)

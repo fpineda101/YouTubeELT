@@ -1,7 +1,10 @@
 from airflow import DAG
 import pendulum
 from datetime import datetime, timedelta
-from airflow.operators.trigger_dagrun import TriggerDagRunOperator
+try:
+    from airflow.operators.trigger_dagrun import TriggerDagRunOperator
+except ImportError:
+    from airflow.operators.dagrun_operator import TriggerDagRunOperator
 
 from api.video_stats import get_playlist_id, get_video_ids, extract_video_data, save_to_json
 
